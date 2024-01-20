@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+      html {
+        overflow-x: hidden;
+      }
+      body{
+        background-color: #f7f7f7;
+      }
+      .nav-extended {
+        background-color: rgb(0, 54, 21);
+      }
+      nav ul a {
+        padding: 0px 22px;
+      }
+
+      nav ul a:hover {
+        background-color: rgb(44, 150, 44);
+      }
+      .card {
+        width: 320px;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 5px 10px;
+        justify-content: space-evenly;
+        transition: all .3s;
+      }
+      .card:hover {
+        transform: scale(1.05);
+        background-color: #ffffff;
+      }
+      #sec {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
+        transition: all .3s;
+      }
+
+      .buy-now  {
+        display: flex;
+        color: #fff;
+        background-color: #000000;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 10px 25px;
+        margin: auto 10px;
+        align-items: center;
+        cursor: pointer;
+        border: none;
+      }
+      .card-content {
+        display: flex;
+        flex-direction: column;
+
+      }
+      #title {
+        height: 100px;
+        width: 300px;
+        margin: 10px;
+      }
+      .card .card-action {
+        width: 100%;
+      }
+      #btn-add{
+        right: 10px;
+        bottom: 100px;
+      }
+      .links-fo {
+      color: #eee;
+      }
+      .links-fo:hover {
+        color: #bdbdbd;
+      }
+      #form-login {
+        display: none;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 400px;
+        position: absolute;
+        right: 22em;
+        color: #000000;
+      }
+
+      #email1,
+      #pw-login1 {
+        margin: 0px 5px;
+        background-color: #f7f7f7;
+        padding: 0px 10px;
+        border-radius: 25px;
+        font-size: 16px;
+        font-family: Arial, Helvetica, sans-serif;
+        height: 2rem
+      }
+
+      .icon-span {
+        display: flex;
+        position: absolute;
+        right: 22em;
+        cursor: pointer;
+      }
+      #icon:hover {
+        color: #bdbdbd;
+      }
+
+      #nome-usuario {
+        margin: 0px 4px;
+        text-decoration: underline;
+        text-transform: capitalize;
+        letter-spacing: .5px;
+      }
+
+      #btn-enter {
+        background-color: hidden;
+        border-radius: 15px;
+        padding: 5px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      #btn-enter:hover {
+        background-color: #3ed63e;
+      }
+      </style>
+
+    <title>Products</title>
+</head>
+<body>
+  <nav class="nav-extended">
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo">Your Shop</a>
+      <span class="icon-span">
+        <span id="nome-usuario">usuario</span>
+        <i class="bi bi-person-circle" id="icon"></i>
+      </span>
+      <form action="/" id="form-login">
+
+        <input type="email" name="email" id="email1" placeholder="E-mail">
+      
+        <input type="password" name="pw-login" id="pw-login1" placeholder="Senha">
+          
+        <button id="btn-enter">Entrar</button>
+      </form>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/">Produtos</a></li>
+        <li><a href="/carrinho">Carrinho</a></li>
+        <li><a href="/cadastro">Cadastra-se</a></li>
+      </ul>
+    </div>
+    <div class="nav-content">
+      <ul class="tabs tabs-transparent container">
+        <ul class="tabs tabs-transparent container">
+            <li class="tab">
+              <a  href="/">TUDO</a>
+            </li>
+            <li class="tab">
+              <a class="active" href="/eletronicos">ELETRONICOS</a>
+            </li>
+            <li class="tab">
+              <a  href="/joias">JOIAS</a>
+            </li>
+            <li class="tab">
+              <a  href="/clothing">VESTUARIO</a>
+            </li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="/">Produtos</a></li>
+    <li><a href="/carrinho">Carrinho</a></li>
+    <li><a href="collapsible.html">Login/Cadastro</a></li>
+  </ul>
+
+    <section id="sec">
+        <% products_elet.forEach( item => { %>
+        <div class="card">
+            <div class="card-image waves-effect waves-block waves-light" id="img-card">
+              <img class="activator" src="<%= item.image %>" alt="img">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4" id="title"> <%= item.title %> </span>
+              <a class="btn-floating halfway-fab waves-effect waves-light red" id="btn-add"><i class="material-icons">add</i></a>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"> <%= item.price %> <i class="material-icons right">close</i></span>
+                <p> <%= item.description %> </p>
+            </div>
+            <div class="card-action">
+              <form action="/carrinho" method="post">
+
+                <input type="hidden" name="Comprar" value="<%= item %>">
+                <button class="buy-now " type="submit">Comprar agora</button>
+              </form>
+            </div>
+          </div>
+          <% }) %>
+    </section>
+    
+    <footer class="page-footer grey darken-4">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Your Shop</h5>
+          </div>
+          <div class="col l4 offset-l2 s12" id="container-footer-ul">
+            <ul class="footer-ul">
+              <li><a class="links-fo" href="/products">Produtos</a></li>
+              <li><a class="links-fo" href="/products_elet">Eletronicos</a></li>
+              <li><a class="links-fo" href="/products_joias">Joias</a></li>
+              <li><a class="links-fo" href="/products_clothing">Vestuario</a></li>
+              <li><a class="links-fo" href="#">Carrinho</a></li>
+              <li><a class="links-fo" href="#">Ajuda</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2023 Copyright Isaac Gomes
+
+          <a class="links-fo right" href="#!">Mais opções</a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>
